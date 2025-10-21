@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cf0bp8ux5c600"]
+
+[ext_resource type="Texture2D" uid="uid://rjlbntdsc3tn" path="res://icon.svg" id="1_jdg2m"]
+[ext_resource type="Script" uid="uid://blpy2dp2eioj8" path="res://personaje_principal.gd" id="1_r0811"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdg2m"]
+size = Vector2(128, 128)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r0811"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hcujj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rftnj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0or06"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PersonajePrincipal" type="CharacterBody2D" parent="."]
+position = Vector2(576, 320)
+script = ExtResource("1_r0811")
+
+[node name="Sprite2D" type="Sprite2D" parent="PersonajePrincipal"]
+texture = ExtResource("1_jdg2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PersonajePrincipal"]
+shape = SubResource("RectangleShape2D_jdg2m")
+
+[node name="Bottom wall" type="StaticBody2D" parent="."]
+scale = Vector2(-1035194.94, -0.3413504)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom wall"]
+scale = Vector2(9128.245, 0.9611125)
+shape = SubResource("WorldBoundaryShape2D_r0811")
+
+[node name="Upper wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper wall"]
+rotation = 1.5707964
+scale = Vector2(-113.68911, 0.5358615)
+shape = SubResource("WorldBoundaryShape2D_hcujj")
+
+[node name="Left wall" type="StaticBody2D" parent="."]
+position = Vector2(1152, 648)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left wall"]
+scale = Vector2(163013.73, 0.3136441)
+shape = SubResource("WorldBoundaryShape2D_rftnj")
+
+[node name="Right wall" type="StaticBody2D" parent="."]
+position = Vector2(1152, 648)
+scale = Vector2(1.3913163, 9.653777)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right wall"]
+rotation = 1.5707964
+scale = Vector2(51.6901, -0.14445277)
+shape = SubResource("WorldBoundaryShape2D_0or06")
