@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bvvamfkcodjke"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Play" type="Button" parent="."]
+offset_left = 128.0
+offset_top = 512.0
+offset_right = 384.0
+offset_bottom = 576.0
+text = "Play
+"
+
+[node name="Options" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 512.0
+offset_right = 704.0
+offset_bottom = 576.0
+text = "Options
+"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 768.0
+offset_top = 512.0
+offset_right = 1024.0
+offset_bottom = 576.0
+text = "Quit
+"
