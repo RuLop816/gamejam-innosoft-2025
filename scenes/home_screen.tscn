@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bvvamfkcodjke"]
+[gd_scene load_steps=2 format=3 uid="uid://bvvamfkcodjke"]
+
+[ext_resource type="Script" uid="uid://brgdx32thgi17" path="res://scripts/home_screen.gd" id="1_lapbl"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_lapbl")
 
 [node name="Play" type="Button" parent="."]
 offset_left = 128.0
@@ -25,3 +28,6 @@ offset_right = 1024.0
 offset_bottom = 576.0
 text = "Quit
 "
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

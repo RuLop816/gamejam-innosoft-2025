@@ -14,6 +14,10 @@ config/name="Not Ninis game"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+NavigationManager="*res://scripts/navigation_manager.gd"
+
 [input]
 
 Left={

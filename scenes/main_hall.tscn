@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://cf0bp8ux5c600"]
+
+[ext_resource type="Script" uid="uid://blpy2dp2eioj8" path="res://main_character.gd" id="1_cptfm"]
+[ext_resource type="Texture2D" uid="uid://rjlbntdsc3tn" path="res://icon.svg" id="2_muuyn"]
+[ext_resource type="Script" uid="uid://b1345xxthxwfi" path="res://scripts/dice_number.gd" id="3_muuyn"]
+[ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="5_wf2n6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdg2m"]
+size = Vector2(128, 128)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r0811"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hcujj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rftnj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0or06"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_muuyn"]
+b = Vector2(128, 0)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MainCharacter" type="CharacterBody2D" parent="."]
+position = Vector2(576, 320)
+script = ExtResource("1_cptfm")
+
+[node name="Sprite2D" type="Sprite2D" parent="MainCharacter"]
+texture = ExtResource("2_muuyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCharacter"]
+shape = SubResource("RectangleShape2D_jdg2m")
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+scale = Vector2(-1035194.94, -0.3413504)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+scale = Vector2(9128.245, 0.9611125)
+shape = SubResource("WorldBoundaryShape2D_r0811")
+
+[node name="UpperWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperWall"]
+rotation = 1.5707964
+scale = Vector2(-113.68911, 0.5358615)
+shape = SubResource("WorldBoundaryShape2D_hcujj")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(1152, 648)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+scale = Vector2(163013.73, 0.3136441)
+shape = SubResource("WorldBoundaryShape2D_rftnj")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(1152, 648)
+scale = Vector2(1.3913163, 9.653777)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+rotation = 1.5707964
+scale = Vector2(51.6901, -0.14445277)
+shape = SubResource("WorldBoundaryShape2D_0or06")
+
+[node name="Dice" type="Button" parent="."]
+offset_left = 512.0
+offset_top = 512.0
+offset_right = 640.0
+offset_bottom = 576.0
+text = "Dado"
+
+[node name="DiceNumber" type="TextEdit" parent="Dice"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 120.0
+offset_bottom = 104.0
+script = ExtResource("3_muuyn")
+
+[node name="DoorOne" type="Area2D" parent="."]
+position = Vector2(512, 32)
+script = ExtResource("5_wf2n6")
+destination_level_tag = "level_one"
+destination_door_tag = "DoorTwo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOne"]
+shape = SubResource("SegmentShape2D_muuyn")
+
+[node name="Spawn" type="Marker2D" parent="DoorOne"]
+position = Vector2(-512, -32)
+
+[connection signal="pressed" from="Dice" to="Dice/DiceNumber" method="_on_dice_pressed"]
+[connection signal="body_shape_entered" from="DoorOne" to="." method="_on_door_one_body_shape_entered"]
+[connection signal="body_shape_entered" from="DoorOne" to="DoorOne" method="_on_body_shape_entered"]
