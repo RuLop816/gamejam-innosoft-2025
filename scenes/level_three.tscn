@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7omxb20balob"]
+
+[ext_resource type="Script" uid="uid://w0n6xaqdwp3h" path="res://scenes/level.gd" id="1_ol28e"]
+[ext_resource type="Script" uid="uid://blpy2dp2eioj8" path="res://main_character.gd" id="2_jyw0m"]
+[ext_resource type="Texture2D" uid="uid://rjlbntdsc3tn" path="res://icon.svg" id="3_87c5r"]
+[ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="4_yguh4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhu28"]
+size = Vector2(128, 128)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_843q2"]
+b = Vector2(128, 0)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ol28e")
+
+[node name="MainCharacter" type="CharacterBody2D" parent="."]
+position = Vector2(576, 320)
+script = ExtResource("2_jyw0m")
+
+[node name="Sprite2D" type="Sprite2D" parent="MainCharacter"]
+texture = ExtResource("3_87c5r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCharacter"]
+shape = SubResource("RectangleShape2D_bhu28")
+
+[node name="DoorThreeLvl" type="Area2D" parent="."]
+position = Vector2(512, 32)
+script = ExtResource("4_yguh4")
+destination_level_tag = "main_hall"
+destination_door_tag = "Doors/DoorThreeMH"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorThreeLvl"]
+shape = SubResource("SegmentShape2D_843q2")
+
+[node name="Spawn" type="Marker2D" parent="DoorThreeLvl"]
+position = Vector2(64, 288)
+
+[connection signal="body_shape_entered" from="DoorThreeLvl" to="DoorThreeLvl" method="_on_body_shape_entered"]

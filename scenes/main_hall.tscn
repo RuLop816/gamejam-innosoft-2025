@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cf0bp8ux5c600"]
+[gd_scene load_steps=12 format=3 uid="uid://cf0bp8ux5c600"]
 
 [ext_resource type="Script" uid="uid://blpy2dp2eioj8" path="res://main_character.gd" id="1_cptfm"]
+[ext_resource type="Script" uid="uid://5fpchmg2h06t" path="res://scenes/main_hall.gd" id="1_wf2n6"]
 [ext_resource type="Texture2D" uid="uid://rjlbntdsc3tn" path="res://icon.svg" id="2_muuyn"]
 [ext_resource type="Script" uid="uid://b1345xxthxwfi" path="res://scripts/dice_number.gd" id="3_muuyn"]
 [ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="5_wf2n6"]
@@ -16,10 +17,11 @@ size = Vector2(128, 128)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0or06"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_muuyn"]
-b = Vector2(128, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf2n6"]
+size = Vector2(128, 42)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_wf2n6")
 
 [node name="MainCharacter" type="CharacterBody2D" parent="."]
 position = Vector2(576, 320)
@@ -76,18 +78,138 @@ offset_right = 120.0
 offset_bottom = 104.0
 script = ExtResource("3_muuyn")
 
-[node name="DoorOne" type="Area2D" parent="."]
-position = Vector2(512, 32)
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="DoorOneMH" type="Area2D" parent="Doors"]
+position = Vector2(104, 32)
 script = ExtResource("5_wf2n6")
 destination_level_tag = "level_one"
-destination_door_tag = "DoorTwo"
+destination_door_tag = "DoorOneLvl"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOne"]
-shape = SubResource("SegmentShape2D_muuyn")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorOneMH"]
+position = Vector2(48, 11)
+shape = SubResource("RectangleShape2D_wf2n6")
 
-[node name="Spawn" type="Marker2D" parent="DoorOne"]
-position = Vector2(-512, -32)
+[node name="Spawn" type="Marker2D" parent="Doors/DoorOneMH"]
+position = Vector2(48, 288)
+
+[node name="Label" type="Label" parent="Doors/DoorOneMH"]
+offset_top = 40.0
+offset_right = 77.0
+offset_bottom = 63.0
+scale = Vector2(1.3718216, 1.1066219)
+text = "Level One"
+
+[node name="DoorTwoMH" type="Area2D" parent="Doors"]
+position = Vector2(272, 32)
+script = ExtResource("5_wf2n6")
+destination_level_tag = "level_two"
+destination_door_tag = "DoorTwoLvl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorTwoMH"]
+position = Vector2(48, 11)
+shape = SubResource("RectangleShape2D_wf2n6")
+
+[node name="Spawn" type="Marker2D" parent="Doors/DoorTwoMH"]
+position = Vector2(48, 288)
+
+[node name="Label" type="Label" parent="Doors/DoorTwoMH"]
+offset_left = -16.0
+offset_top = 40.0
+offset_right = 61.0
+offset_bottom = 63.0
+scale = Vector2(1.579029, 1.1986396)
+text = "Level Two"
+
+[node name="DoorThreeMH" type="Area2D" parent="Doors"]
+position = Vector2(440, 32)
+script = ExtResource("5_wf2n6")
+destination_level_tag = "level_three"
+destination_door_tag = "DoorThreeLvl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorThreeMH"]
+position = Vector2(48, 11)
+shape = SubResource("RectangleShape2D_wf2n6")
+
+[node name="Spawn" type="Marker2D" parent="Doors/DoorThreeMH"]
+position = Vector2(48, 288)
+
+[node name="Label" type="Label" parent="Doors/DoorThreeMH"]
+offset_left = -16.0
+offset_top = 40.0
+offset_right = 24.0
+offset_bottom = 63.0
+scale = Vector2(1.3221369, 1.0688864)
+text = "Level Three"
+
+[node name="DoorFourMH" type="Area2D" parent="Doors"]
+position = Vector2(640, 32)
+script = ExtResource("5_wf2n6")
+destination_level_tag = "level_four"
+destination_door_tag = "DoorFourLvl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorFourMH"]
+position = Vector2(48, 11)
+shape = SubResource("RectangleShape2D_wf2n6")
+
+[node name="Spawn" type="Marker2D" parent="Doors/DoorFourMH"]
+position = Vector2(48, 288)
+
+[node name="Label" type="Label" parent="Doors/DoorFourMH"]
+offset_left = -16.0
+offset_top = 40.0
+offset_right = 24.0
+offset_bottom = 63.0
+scale = Vector2(1.4267031, 1.1204796)
+text = "Level Four"
+
+[node name="DoorFiveMH" type="Area2D" parent="Doors"]
+position = Vector2(808, 32)
+script = ExtResource("5_wf2n6")
+destination_level_tag = "level_five"
+destination_door_tag = "DoorFiveLvl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorFiveMH"]
+position = Vector2(48, 11)
+shape = SubResource("RectangleShape2D_wf2n6")
+
+[node name="Spawn" type="Marker2D" parent="Doors/DoorFiveMH"]
+position = Vector2(48, 288)
+
+[node name="Label" type="Label" parent="Doors/DoorFiveMH"]
+offset_left = -16.0
+offset_top = 40.0
+offset_right = 24.0
+offset_bottom = 63.0
+scale = Vector2(1.5297033, 1.2356184)
+text = "Level Five"
+
+[node name="DoorSixMH" type="Area2D" parent="Doors"]
+position = Vector2(976, 32)
+script = ExtResource("5_wf2n6")
+destination_level_tag = "level_six"
+destination_door_tag = "DoorSixLvl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorSixMH"]
+position = Vector2(48, 11)
+shape = SubResource("RectangleShape2D_wf2n6")
+
+[node name="Spawn" type="Marker2D" parent="Doors/DoorSixMH"]
+position = Vector2(48, 288)
+
+[node name="Label" type="Label" parent="Doors/DoorSixMH"]
+offset_left = -16.0
+offset_top = 40.0
+offset_right = 24.0
+offset_bottom = 63.0
+scale = Vector2(1.7435102, 1.2156354)
+text = "Level Six"
 
 [connection signal="pressed" from="Dice" to="Dice/DiceNumber" method="_on_dice_pressed"]
-[connection signal="body_shape_entered" from="DoorOne" to="." method="_on_door_one_body_shape_entered"]
-[connection signal="body_shape_entered" from="DoorOne" to="DoorOne" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Doors/DoorOneMH" to="." method="_on_door_one_body_shape_entered"]
+[connection signal="body_shape_entered" from="Doors/DoorOneMH" to="Doors/DoorOneMH" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Doors/DoorTwoMH" to="Doors/DoorTwoMH" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Doors/DoorThreeMH" to="Doors/DoorThreeMH" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Doors/DoorFourMH" to="Doors/DoorFourMH" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Doors/DoorFiveMH" to="Doors/DoorFiveMH" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Doors/DoorSixMH" to="Doors/DoorSixMH" method="_on_body_shape_entered"]
