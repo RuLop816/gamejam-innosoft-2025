@@ -28,12 +28,19 @@ shape = SubResource("RectangleShape2D_bhu28")
 position = Vector2(512, 32)
 script = ExtResource("4_5mgce")
 destination_level_tag = "main_hall"
-destination_door_tag = "Doors/DoorOneMH"
+destination_door_tag = "Doors/DoorFourMH"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorFourLvl"]
 shape = SubResource("SegmentShape2D_843q2")
 
 [node name="Spawn" type="Marker2D" parent="DoorFourLvl"]
 position = Vector2(64, 288)
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 520.0
+offset_top = 552.0
+offset_right = 672.0
+offset_bottom = 616.0
+text = "Level Four"
 
 [connection signal="body_shape_entered" from="DoorFourLvl" to="DoorFourLvl" method="_on_body_shape_entered"]
