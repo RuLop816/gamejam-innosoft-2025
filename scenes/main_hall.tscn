@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://blpy2dp2eioj8" path="res://main_character.gd" id="1_cptfm"]
 [ext_resource type="Script" uid="uid://5fpchmg2h06t" path="res://scenes/main_hall.gd" id="1_wf2n6"]
-[ext_resource type="Texture2D" uid="uid://rjlbntdsc3tn" path="res://icon.svg" id="2_muuyn"]
 [ext_resource type="Script" uid="uid://b1345xxthxwfi" path="res://scripts/dice_number.gd" id="3_muuyn"]
+[ext_resource type="Texture2D" uid="uid://dqn24josy2wpe" path="res://images/conejo.png" id="3_wf2n6"]
 [ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="5_wf2n6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdg2m"]
@@ -28,7 +28,8 @@ position = Vector2(576, 320)
 script = ExtResource("1_cptfm")
 
 [node name="Sprite2D" type="Sprite2D" parent="MainCharacter"]
-texture = ExtResource("2_muuyn")
+scale = Vector2(0.24999999, 0.24999999)
+texture = ExtResource("3_wf2n6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainCharacter"]
 shape = SubResource("RectangleShape2D_jdg2m")
