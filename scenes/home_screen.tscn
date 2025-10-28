@@ -5,31 +5,65 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_lapbl")
 
-[node name="Start Game" type="Button" parent="."]
-offset_left = 128.0
-offset_top = 512.0
-offset_right = 384.0
-offset_bottom = 576.0
+[node name="OptionsMenu" type="Panel" parent="."]
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 896.0
+offset_bottom = 512.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 320.0
+offset_right = 432.0
+offset_bottom = 368.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Back
+"
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+offset_left = 256.0
+offset_top = 512.0
+offset_right = 896.0
+offset_bottom = 576.0
+alignment = 1
+
+[node name="Start Game" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
 text = "Start Game
 "
 icon_alignment = 1
 
-[node name="Options" type="Button" parent="."]
-offset_left = 448.0
-offset_top = 512.0
-offset_right = 704.0
-offset_bottom = 576.0
+[node name="Options" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
 text = "Options
 "
 
-[node name="Exit" type="Button" parent="."]
-offset_left = 768.0
-offset_top = 512.0
-offset_right = 1024.0
-offset_bottom = 576.0
+[node name="Exit" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
 text = "Exit"
 
-[connection signal="pressed" from="Start Game" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="OptionsMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Buttons/Start Game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]
