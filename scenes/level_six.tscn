@@ -1,13 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://n3ehr2ss0dth"]
+[gd_scene load_steps=7 format=3 uid="uid://n3ehr2ss0dth"]
 
 [ext_resource type="Script" uid="uid://w0n6xaqdwp3h" path="res://scripts/level.gd" id="1_rjblw"]
-[ext_resource type="Script" uid="uid://blpy2dp2eioj8" path="res://scripts/main_character.gd" id="2_qd7qr"]
-[ext_resource type="Texture2D" uid="uid://rjlbntdsc3tn" path="res://images/icon.svg" id="3_ijsq2"]
+[ext_resource type="PackedScene" uid="uid://c88gwi4clf313" path="res://scenes/main_character.tscn" id="2_qd7qr"]
+[ext_resource type="PackedScene" uid="uid://drq3pw6yp3je0" path="res://scenes/walls.tscn" id="4_ijsq2"]
 [ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="4_q3apq"]
 [ext_resource type="PackedScene" uid="uid://cvn0lseqopj48" path="res://scenes/pause_menu.tscn" id="5_qd7qr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhu28"]
-size = Vector2(128, 128)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_843q2"]
 b = Vector2(128, 0)
@@ -15,15 +12,9 @@ b = Vector2(128, 0)
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_rjblw")
 
-[node name="MainCharacter" type="CharacterBody2D" parent="."]
-position = Vector2(576, 320)
-script = ExtResource("2_qd7qr")
+[node name="MainCharacter" parent="." instance=ExtResource("2_qd7qr")]
 
-[node name="Sprite2D" type="Sprite2D" parent="MainCharacter"]
-texture = ExtResource("3_ijsq2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCharacter"]
-shape = SubResource("RectangleShape2D_bhu28")
+[node name="Walls" parent="." instance=ExtResource("4_ijsq2")]
 
 [node name="DoorSixLvl" type="Area2D" parent="."]
 position = Vector2(512, 32)
@@ -43,18 +34,6 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="PauseMenu" parent="UI" instance=ExtResource("5_qd7qr")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
 [node name="TextEdit" type="TextEdit" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
@@ -67,5 +46,17 @@ offset_top = -31.848022
 offset_right = 76.415955
 offset_bottom = 32.151978
 text = "Level Six"
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("5_qd7qr")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [connection signal="body_shape_entered" from="DoorSixLvl" to="DoorSixLvl" method="_on_body_shape_entered"]

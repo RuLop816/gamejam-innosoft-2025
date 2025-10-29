@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://drq3pw6yp3je0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_def3t"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yax5h"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0lpna"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_exnah"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+scale = Vector2(-1035194.94, -0.3413504)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+scale = Vector2(9128.245, 0.9611125)
+shape = SubResource("WorldBoundaryShape2D_def3t")
+
+[node name="UpperWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperWall"]
+rotation = 1.5707964
+scale = Vector2(-113.68911, 0.5358615)
+shape = SubResource("WorldBoundaryShape2D_yax5h")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(1152, 648)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+scale = Vector2(163013.73, 0.3136441)
+shape = SubResource("WorldBoundaryShape2D_0lpna")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(1152, 648)
+scale = Vector2(1.3913163, 9.653777)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+rotation = 1.5707964
+scale = Vector2(51.6901, -0.14445277)
+shape = SubResource("WorldBoundaryShape2D_exnah")

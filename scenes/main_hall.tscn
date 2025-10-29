@@ -1,22 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf0bp8ux5c600"]
+[gd_scene load_steps=8 format=3 uid="uid://cf0bp8ux5c600"]
 
-[ext_resource type="Script" uid="uid://blpy2dp2eioj8" path="res://scripts/main_character.gd" id="1_cptfm"]
 [ext_resource type="Script" uid="uid://5fpchmg2h06t" path="res://scripts/main_hall.gd" id="1_wf2n6"]
+[ext_resource type="PackedScene" uid="uid://c88gwi4clf313" path="res://scenes/main_character.tscn" id="2_ok7ty"]
 [ext_resource type="Script" uid="uid://b1345xxthxwfi" path="res://scripts/dice_number.gd" id="3_muuyn"]
-[ext_resource type="Texture2D" uid="uid://dqn24josy2wpe" path="res://images/conejo.png" id="3_wf2n6"]
+[ext_resource type="PackedScene" uid="uid://drq3pw6yp3je0" path="res://scenes/walls.tscn" id="4_3p60x"]
 [ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="5_wf2n6"]
 [ext_resource type="PackedScene" uid="uid://cvn0lseqopj48" path="res://scenes/pause_menu.tscn" id="6_ok7ty"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdg2m"]
-size = Vector2(128, 128)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r0811"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hcujj"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rftnj"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0or06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wf2n6"]
 size = Vector2(128, 42)
@@ -24,46 +13,9 @@ size = Vector2(128, 42)
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_wf2n6")
 
-[node name="MainCharacter" type="CharacterBody2D" parent="."]
-position = Vector2(576, 320)
-script = ExtResource("1_cptfm")
+[node name="MainCharacter" parent="." instance=ExtResource("2_ok7ty")]
 
-[node name="Sprite2D" type="Sprite2D" parent="MainCharacter"]
-scale = Vector2(0.24999999, 0.24999999)
-texture = ExtResource("3_wf2n6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCharacter"]
-shape = SubResource("RectangleShape2D_jdg2m")
-
-[node name="BottomWall" type="StaticBody2D" parent="."]
-scale = Vector2(-1035194.94, -0.3413504)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
-scale = Vector2(9128.245, 0.9611125)
-shape = SubResource("WorldBoundaryShape2D_r0811")
-
-[node name="UpperWall" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperWall"]
-rotation = 1.5707964
-scale = Vector2(-113.68911, 0.5358615)
-shape = SubResource("WorldBoundaryShape2D_hcujj")
-
-[node name="LeftWall" type="StaticBody2D" parent="."]
-position = Vector2(1152, 648)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-scale = Vector2(163013.73, 0.3136441)
-shape = SubResource("WorldBoundaryShape2D_rftnj")
-
-[node name="RightWall" type="StaticBody2D" parent="."]
-position = Vector2(1152, 648)
-scale = Vector2(1.3913163, 9.653777)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
-rotation = 1.5707964
-scale = Vector2(51.6901, -0.14445277)
-shape = SubResource("WorldBoundaryShape2D_0or06")
+[node name="Walls" parent="." instance=ExtResource("4_3p60x")]
 
 [node name="Doors" type="Node2D" parent="."]
 
