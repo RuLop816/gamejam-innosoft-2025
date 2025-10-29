@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://66kh0rg57a1y"
-path="res://.godot/imported/el bombas.png-0cb4bcde84970e91901923312d335a84.ctex"
+uid="uid://boxboiiboyqej"
+path="res://.godot/imported/cajamagica.png-1cf8c1fba14054c72a41c189c24e4521.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/bosses/el bombas.png"
-dest_files=["res://.godot/imported/el bombas.png-0cb4bcde84970e91901923312d335a84.ctex"]
+source_file="res://images/bosses/cajamagica.png"
+dest_files=["res://.godot/imported/cajamagica.png-1cf8c1fba14054c72a41c189c24e4521.ctex"]
 
 [params]
 
