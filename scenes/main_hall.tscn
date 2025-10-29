@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cf0bp8ux5c600"]
+[gd_scene load_steps=13 format=3 uid="uid://cf0bp8ux5c600"]
 
-[ext_resource type="Script" uid="uid://blpy2dp2eioj8" path="res://main_character.gd" id="1_cptfm"]
-[ext_resource type="Script" uid="uid://5fpchmg2h06t" path="res://scenes/main_hall.gd" id="1_wf2n6"]
+[ext_resource type="Script" uid="uid://blpy2dp2eioj8" path="res://scripts/main_character.gd" id="1_cptfm"]
+[ext_resource type="Script" uid="uid://5fpchmg2h06t" path="res://scripts/main_hall.gd" id="1_wf2n6"]
 [ext_resource type="Script" uid="uid://b1345xxthxwfi" path="res://scripts/dice_number.gd" id="3_muuyn"]
 [ext_resource type="Texture2D" uid="uid://dqn24josy2wpe" path="res://images/conejo.png" id="3_wf2n6"]
 [ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="5_wf2n6"]
+[ext_resource type="PackedScene" uid="uid://cvn0lseqopj48" path="res://scenes/pause_menu.tscn" id="6_ok7ty"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdg2m"]
 size = Vector2(128, 128)
@@ -63,21 +64,6 @@ scale = Vector2(1.3913163, 9.653777)
 rotation = 1.5707964
 scale = Vector2(51.6901, -0.14445277)
 shape = SubResource("WorldBoundaryShape2D_0or06")
-
-[node name="Dice" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 512.0
-offset_right = 640.0
-offset_bottom = 576.0
-text = "Dado"
-
-[node name="DiceNumber" type="TextEdit" parent="Dice"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 72.0
-offset_right = 120.0
-offset_bottom = 104.0
-script = ExtResource("3_muuyn")
 
 [node name="Doors" type="Node2D" parent="."]
 
@@ -206,7 +192,47 @@ offset_bottom = 63.0
 scale = Vector2(1.7435102, 1.2156354)
 text = "Level Six"
 
-[connection signal="pressed" from="Dice" to="Dice/DiceNumber" method="_on_dice_pressed"]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Dice" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.84000003
+anchor_right = 0.5
+anchor_bottom = 0.84000003
+offset_left = -64.0
+offset_top = -32.320007
+offset_right = 64.0
+offset_bottom = 31.679993
+text = "Dado"
+
+[node name="DiceNumber" type="TextEdit" parent="UI/Dice"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 120.0
+offset_bottom = 104.0
+script = ExtResource("3_muuyn")
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("6_ok7ty")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [connection signal="body_shape_entered" from="Doors/DoorOneMH" to="." method="_on_door_one_body_shape_entered"]
 [connection signal="body_shape_entered" from="Doors/DoorOneMH" to="Doors/DoorOneMH" method="_on_body_shape_entered"]
 [connection signal="body_shape_entered" from="Doors/DoorTwoMH" to="Doors/DoorTwoMH" method="_on_body_shape_entered"]
@@ -214,3 +240,4 @@ text = "Level Six"
 [connection signal="body_shape_entered" from="Doors/DoorFourMH" to="Doors/DoorFourMH" method="_on_body_shape_entered"]
 [connection signal="body_shape_entered" from="Doors/DoorFiveMH" to="Doors/DoorFiveMH" method="_on_body_shape_entered"]
 [connection signal="body_shape_entered" from="Doors/DoorSixMH" to="Doors/DoorSixMH" method="_on_body_shape_entered"]
+[connection signal="pressed" from="UI/Dice" to="UI/Dice/DiceNumber" method="_on_dice_pressed"]
