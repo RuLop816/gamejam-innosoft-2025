@@ -87,8 +87,6 @@ offset_left = 576.0
 offset_top = 324.0
 offset_right = 576.0
 offset_bottom = 324.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_myx47")
 
 [node name="ColorRect" type="ColorRect" parent="."]

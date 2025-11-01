@@ -1,14 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cf0bp8ux5c600"]
+[gd_scene load_steps=9 format=3 uid="uid://cf0bp8ux5c600"]
 
 [ext_resource type="Script" uid="uid://5fpchmg2h06t" path="res://scripts/main_hall.gd" id="1_wf2n6"]
 [ext_resource type="PackedScene" uid="uid://c88gwi4clf313" path="res://scenes/main_character.tscn" id="2_ok7ty"]
 [ext_resource type="Script" uid="uid://b1345xxthxwfi" path="res://scripts/dice_number.gd" id="3_muuyn"]
 [ext_resource type="PackedScene" uid="uid://drq3pw6yp3je0" path="res://scenes/walls.tscn" id="4_3p60x"]
 [ext_resource type="PackedScene" uid="uid://bvevirn4lu4df" path="res://scenes/master_dice.tscn" id="4_xs61c"]
-[ext_resource type="PackedScene" uid="uid://cwu1a5q37af6n" path="res://scenes/first_dices.tscn" id="5_dbmwu"]
 [ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="5_wf2n6"]
 [ext_resource type="PackedScene" uid="uid://cvn0lseqopj48" path="res://scenes/pause_menu.tscn" id="6_ok7ty"]
-[ext_resource type="PackedScene" uid="uid://dupml8hcjbwpn" path="res://scenes/inventory.tscn" id="7_xs61c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wf2n6"]
 size = Vector2(128, 42)
@@ -24,15 +22,13 @@ unique_name_in_owner = true
 [node name="MasterDice" parent="." instance=ExtResource("4_xs61c")]
 position = Vector2(208, 88)
 
-[node name="FirstDices" parent="." instance=ExtResource("5_dbmwu")]
-
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="DoorOneMH" type="Area2D" parent="Doors"]
 position = Vector2(104, 32)
 script = ExtResource("5_wf2n6")
 destination_level_tag = "level_one"
-destination_door_tag = "Doors/DoorOneLvl"
+destination_door_tag = "DoorOneLvl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorOneMH"]
 position = Vector2(48, 11)
@@ -52,7 +48,7 @@ text = "Level One"
 position = Vector2(272, 32)
 script = ExtResource("5_wf2n6")
 destination_level_tag = "level_two"
-destination_door_tag = "Doors/DoorTwoLvl"
+destination_door_tag = "DoorTwoLvl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorTwoMH"]
 position = Vector2(48, 11)
@@ -73,7 +69,7 @@ text = "Level Two"
 position = Vector2(440, 32)
 script = ExtResource("5_wf2n6")
 destination_level_tag = "level_three"
-destination_door_tag = "Doors/DoorThreeLvl"
+destination_door_tag = "DoorThreeLvl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorThreeMH"]
 position = Vector2(48, 11)
@@ -94,7 +90,7 @@ text = "Level Three"
 position = Vector2(640, 32)
 script = ExtResource("5_wf2n6")
 destination_level_tag = "level_four"
-destination_door_tag = "Doors/DoorFourLvl"
+destination_door_tag = "DoorFourLvl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorFourMH"]
 position = Vector2(48, 11)
@@ -115,7 +111,7 @@ text = "Level Four"
 position = Vector2(808, 32)
 script = ExtResource("5_wf2n6")
 destination_level_tag = "level_five"
-destination_door_tag = "Doors/DoorFiveLvl"
+destination_door_tag = "DoorFiveLvl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorFiveMH"]
 position = Vector2(48, 11)
@@ -136,7 +132,7 @@ text = "Level Five"
 position = Vector2(976, 32)
 script = ExtResource("5_wf2n6")
 destination_level_tag = "level_six"
-destination_door_tag = "Doors/DoorSixLvl"
+destination_door_tag = "DoorSixLvl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorSixMH"]
 position = Vector2(48, 11)
@@ -180,18 +176,6 @@ offset_right = 120.0
 offset_bottom = 104.0
 script = ExtResource("3_muuyn")
 
-[node name="Inventory" parent="UI" instance=ExtResource("7_xs61c")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
 [node name="PauseMenu" parent="UI" instance=ExtResource("6_ok7ty")]
 layout_mode = 1
 anchors_preset = 8
@@ -203,8 +187,6 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 

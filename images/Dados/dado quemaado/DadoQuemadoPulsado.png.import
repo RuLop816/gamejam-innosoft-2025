@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjqv8wb3ohsvk"
-path="res://.godot/imported/DadoCamaleon.png-dc33d22812f69e26a61f2c1e7b08af61.ctex"
+uid="uid://crrah32lkx11e"
+path="res://.godot/imported/DadoQuemadoPulsado.png-b2d2925115d6daa0235d203add035c2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Dados/dadocamaleon/DadoCamaleon.png"
-dest_files=["res://.godot/imported/DadoCamaleon.png-dc33d22812f69e26a61f2c1e7b08af61.ctex"]
+source_file="res://images/Dados/dado quemaado/DadoQuemadoPulsado.png"
+dest_files=["res://.godot/imported/DadoQuemadoPulsado.png-b2d2925115d6daa0235d203add035c2e.ctex"]
 
 [params]
 

@@ -4,18 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://dqn24josy2wpe" path="res://images/conejo.png" id="2_tqm6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e6tc2"]
-size = Vector2(64, 120)
+size = Vector2(48, 88)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="MainCharacter" type="CharacterBody2D" parent="."]
 position = Vector2(576, 320)
 script = ExtResource("1_ig48j")
+node_path = NodePath(".")
 
 [node name="Sprite2D" type="Sprite2D" parent="MainCharacter"]
-scale = Vector2(0.24999999, 0.24999999)
+position = Vector2(47.999996, 16.000004)
+scale = Vector2(0.18749997, 0.18749997)
 texture = ExtResource("2_tqm6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainCharacter"]
-position = Vector2(0, -4)
+position = Vector2(48, 12)
 shape = SubResource("RectangleShape2D_e6tc2")

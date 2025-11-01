@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwu1a5q37af6n"]
+
+[ext_resource type="Texture2D" uid="uid://qy2bl6y5d1dy" path="res://images/Dados/dado normal/Dado1Centrado.png" id="1_0o5yx"]
+[ext_resource type="Script" uid="uid://dhxwp0url1gu6" path="res://scripts/first_dices.gd" id="1_s3edr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3edr"]
+size = Vector2(23, 23)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_s3edr")
+
+[node name="FirstDices" type="StaticBody2D" parent="."]
+position = Vector2(960, 512)
+
+[node name="Sprite2D" type="Sprite2D" parent="FirstDices"]
+position = Vector2(3.0517578e-05, -4.5776367e-05)
+scale = Vector2(0.16308594, 0.16699216)
+texture = ExtResource("1_0o5yx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstDices"]
+shape = SubResource("RectangleShape2D_s3edr")
