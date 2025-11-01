@@ -3,6 +3,7 @@ extends Node
 var collider 
 var level_number = 1
 var dices_in_inventory = [null, null, null, null, null, null, null, null, null, null, null]
+var dices_in_hand = []
 var pause_menu_opened = false
 var inventory_opened = false
 var ui_blocked = false
@@ -16,3 +17,6 @@ var level_six_blocked = true
 var master_dice_blocked = false
 var dice_faces = [1]
 var first_dices_taken = false
+var boss
+var goal 
+var accepted_pressed = false

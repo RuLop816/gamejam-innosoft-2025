@@ -246,12 +246,10 @@ script = ExtResource("3_yyk2a")
 tween_intensity = 1.5
 tween_duration = 0.3
 
-[node name="InvisibleButton" type="Button" parent="PanelContainer/Dices/GroupSix"]
-modulate = Color(1, 1, 1, 0)
+[node name="AcceptButton" type="Button" parent="PanelContainer/Dices/GroupSix"]
 layout_mode = 2
-size_flags_vertical = 2
-mouse_filter = 2
-mouse_behavior_recursive = 1
+size_flags_vertical = 3
+text = "Accept"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -259,13 +257,25 @@ libraries = {
 }
 
 [connection signal="pressed" from="PanelContainer/Dices/GroupOne/DiceOne" to="." method="_on_dice_one_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupOne/DiceOne" to="." method="_on_dice_one_toggled"]
 [connection signal="pressed" from="PanelContainer/Dices/GroupOne/DiceTwo" to="." method="_on_dice_two_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupOne/DiceTwo" to="." method="_on_dice_two_toggled"]
 [connection signal="pressed" from="PanelContainer/Dices/GroupTwo/DiceThree" to="." method="_on_dice_three_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupTwo/DiceThree" to="." method="_on_dice_three_toggled"]
 [connection signal="pressed" from="PanelContainer/Dices/GroupTwo/DiceFour" to="." method="_on_dice_four_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupTwo/DiceFour" to="." method="_on_dice_four_toggled"]
 [connection signal="pressed" from="PanelContainer/Dices/GroupThree/DiceFive" to="." method="_on_dice_five_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupThree/DiceFive" to="." method="_on_dice_five_toggled"]
 [connection signal="pressed" from="PanelContainer/Dices/GroupThree/DiceSix" to="." method="_on_dice_six_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupThree/DiceSix" to="." method="_on_dice_six_toggled"]
 [connection signal="pressed" from="PanelContainer/Dices/GroupFour/DiceSeven" to="." method="_on_dice_seven_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupFour/DiceSeven" to="." method="_on_dice_seven_toggled"]
 [connection signal="pressed" from="PanelContainer/Dices/GroupFour/DiceEight" to="." method="_on_dice_eight_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupFour/DiceEight" to="." method="_on_dice_eight_toggled"]
 [connection signal="pressed" from="PanelContainer/Dices/GroupFive/DiceNine" to="." method="_on_dice_nine_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupFive/DiceNine" to="." method="_on_dice_nine_toggled"]
 [connection signal="pressed" from="PanelContainer/Dices/GroupFive/DiceTen" to="." method="_on_dice_ten_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupFive/DiceTen" to="." method="_on_dice_ten_toggled"]
 [connection signal="pressed" from="PanelContainer/Dices/GroupSix/DiceEleven" to="." method="_on_dice_eleven_pressed"]
+[connection signal="toggled" from="PanelContainer/Dices/GroupSix/DiceEleven" to="." method="_on_dice_eleven_toggled"]
+[connection signal="pressed" from="PanelContainer/Dices/GroupSix/AcceptButton" to="." method="_on_accept_button_pressed"]

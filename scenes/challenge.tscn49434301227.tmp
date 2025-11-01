@@ -1,0 +1,168 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2iwrkst3apqg"]
+
+[ext_resource type="Texture2D" uid="uid://d08dsjit7nbu7" path="res://images/pinkish-plain-purple-d76r33git3iucs38.jpg" id="1_k24d4"]
+[ext_resource type="Script" uid="uid://cr5xar0mygdsy" path="res://scripts/challenge.gd" id="1_oil0i"]
+[ext_resource type="Texture2D" uid="uid://qy2bl6y5d1dy" path="res://images/Dados/dado normal/Dado1Centrado.png" id="2_bksvc"]
+[ext_resource type="Texture2D" uid="uid://rrwrqlcowbwh" path="res://images/plain-pastel-color-7dxcwk4tz1ds0wdm.jpg" id="2_r4y41"]
+[ext_resource type="Texture2D" uid="uid://ccfsxlfayvuge" path="res://images/Dados/dado normal/Dado2Centrado.png" id="3_in4yl"]
+[ext_resource type="Texture2D" uid="uid://b80pbn3pewx1x" path="res://images/Dados/dado normal/Dado3Centrado.png" id="4_oil0i"]
+[ext_resource type="Texture2D" uid="uid://bxaqubkvw2lnd" path="res://images/Dados/dado normal/Dado4Centrado.png" id="5_d4flp"]
+[ext_resource type="Texture2D" uid="uid://bdsnmecako1um" path="res://images/Dados/dado normal/Dado5Centrado.png" id="6_mmkc6"]
+[ext_resource type="Texture2D" uid="uid://dmw4qwf2m2g7g" path="res://images/Dados/dado normal/Dado6Centrado.png" id="7_ew5kh"]
+[ext_resource type="Texture2D" uid="uid://v3wed2647y0" path="res://images/fondo azul liso.jpg" id="9_in4yl"]
+[ext_resource type="PackedScene" uid="uid://dupml8hcjbwpn" path="res://scenes/inventory.tscn" id="11_d4flp"]
+
+[node name="Node2D" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_oil0i")
+
+[node name="RivalBoard" type="Sprite2D" parent="."]
+position = Vector2(576, 160)
+scale = Vector2(-0.46626037, -0.099527344)
+texture = ExtResource("1_k24d4")
+
+[node name="DiceOne" type="Sprite2D" parent="RivalBoard"]
+position = Vector2(739.5286, 0)
+scale = Vector2(0.9761053, 4.5415215)
+texture = ExtResource("2_bksvc")
+
+[node name="DiceTwo" type="Sprite2D" parent="RivalBoard"]
+position = Vector2(446.10266, 0)
+scale = Vector2(1.008, 4.542)
+texture = ExtResource("3_in4yl")
+
+[node name="DiceThree" type="Sprite2D" parent="RivalBoard"]
+position = Vector2(154.42014, -4.7683716e-07)
+scale = Vector2(0.984, 4.542)
+texture = ExtResource("4_oil0i")
+
+[node name="DiceFour" type="Sprite2D" parent="RivalBoard"]
+position = Vector2(-137.26236, 0)
+scale = Vector2(0.94545454, 4.5369754)
+texture = ExtResource("5_d4flp")
+
+[node name="DiceFive" type="Sprite2D" parent="RivalBoard"]
+position = Vector2(-428.9448, -2.3841858e-07)
+scale = Vector2(1, 4.450583)
+texture = ExtResource("6_mmkc6")
+
+[node name="DiceSix" type="Sprite2D" parent="RivalBoard"]
+position = Vector2(-720.6273, 0)
+scale = Vector2(0.9651947, 4.4694176)
+texture = ExtResource("7_ew5kh")
+
+[node name="Scoreboard" type="Sprite2D" parent="RivalBoard"]
+position = Vector2(720.6274, -1607.5986)
+scale = Vector2(0.11849168, 0.5086609)
+texture = ExtResource("1_k24d4")
+
+[node name="TextEdit" type="TextEdit" parent="RivalBoard/Scoreboard"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1927.021
+offset_top = -1921.561
+offset_right = 7.0219727
+offset_bottom = -2.0546875
+grow_horizontal = 2
+grow_vertical = 2
+text = "00"
+
+[node name="PlayerBoard" type="Sprite2D" parent="."]
+position = Vector2(576, 480.42914)
+scale = Vector2(1.1676296, 0.18666181)
+texture = ExtResource("2_r4y41")
+
+[node name="DiceOne" type="Sprite2D" parent="PlayerBoard"]
+position = Vector2(-294.61395, -2.299036)
+scale = Vector2(0.40562877, 2.511226)
+texture = ExtResource("2_bksvc")
+
+[node name="DiceTwo" type="Sprite2D" parent="PlayerBoard"]
+position = Vector2(-178.41798, -2.2990494)
+scale = Vector2(0.40199983, 2.5112257)
+texture = ExtResource("3_in4yl")
+
+[node name="DiceThree" type="Sprite2D" parent="PlayerBoard"]
+position = Vector2(-61.66342, -2.2990417)
+scale = Vector2(0.37663, 2.4559498)
+texture = ExtResource("4_oil0i")
+
+[node name="DiceFour" type="Sprite2D" parent="PlayerBoard"]
+position = Vector2(54.811897, -2.2990143)
+scale = Vector2(0.40357837, 2.3927596)
+texture = ExtResource("5_d4flp")
+
+[node name="DiceFive" type="Sprite2D" parent="PlayerBoard"]
+position = Vector2(171.28719, -2.299014)
+scale = Vector2(0.4151082, 2.4171727)
+texture = ExtResource("6_mmkc6")
+
+[node name="DiceSix" type="Sprite2D" parent="PlayerBoard"]
+position = Vector2(287.76248, -2.299014)
+scale = Vector2(0.3889124, 2.3713431)
+texture = ExtResource("7_ew5kh")
+
+[node name="Scoreboard" type="Sprite2D" parent="PlayerBoard"]
+position = Vector2(284.33673, -859.4642)
+scale = Vector2(0.115975745, 0.49159223)
+texture = ExtResource("2_r4y41")
+
+[node name="TextEdit" type="TextEdit" parent="PlayerBoard/Scoreboard"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -767.99976
+offset_top = -1035.0952
+offset_right = -0.00024414063
+offset_bottom = 11.095215
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "00"
+
+[node name="GoalBoard" type="Sprite2D" parent="."]
+position = Vector2(576, 318.80627)
+scale = Vector2(0.19999993, 0.0824054)
+texture = ExtResource("9_in4yl")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Inventory" parent="UI" instance=ExtResource("11_d4flp")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Continue" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 448.0
+offset_top = 252.0
+offset_right = 575.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue
+"
+
+[connection signal="pressed" from="UI/Continue" to="." method="_on_continue_pressed"]
