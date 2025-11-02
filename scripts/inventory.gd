@@ -332,7 +332,7 @@ func _on_accept_button_pressed() -> void:
 		if(GlobalVariables.dices_in_hand.has("insta_death_dice") and GlobalVariables.dices_in_hand.size()>1):
 			print("Pasa la primera condición")
 			pass
-		elif(GlobalVariables.dices_in_hand.has("multiplier_dice") and GlobalVariables.dices_in_hand.size()>3):
+		elif(GlobalVariables.dices_in_hand.has("multiplier_dice") and GlobalVariables.dices_in_hand.size()>4):
 			print("Pasa la segunda condición")
 			pass
 		elif(two_special_dices_in_hand()):

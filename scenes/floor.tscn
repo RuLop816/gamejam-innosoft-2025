@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfushvj0wvwqx"]
+
+[ext_resource type="Texture2D" uid="uid://uj3llxs1eh2m" path="res://images/lobby/Suelo lobby.png" id="1_ukw5w"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Floor" type="Sprite2D" parent="."]
+z_index = -4000
+position = Vector2(576, 320.00003)
+scale = Vector2(4.681563, 2.6634302)
+texture = ExtResource("1_ukw5w")
+
+[node name="Door2" type="Sprite2D" parent="."]
+
+[node name="Door3" type="Sprite2D" parent="."]

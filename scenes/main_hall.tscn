@@ -1,28 +1,73 @@
-[gd_scene load_steps=11 format=3 uid="uid://cf0bp8ux5c600"]
+[gd_scene load_steps=16 format=3 uid="uid://cf0bp8ux5c600"]
 
 [ext_resource type="Script" uid="uid://5fpchmg2h06t" path="res://scripts/main_hall.gd" id="1_wf2n6"]
 [ext_resource type="PackedScene" uid="uid://c88gwi4clf313" path="res://scenes/main_character.tscn" id="2_ok7ty"]
-[ext_resource type="Script" uid="uid://b1345xxthxwfi" path="res://scripts/dice_number.gd" id="3_muuyn"]
 [ext_resource type="PackedScene" uid="uid://drq3pw6yp3je0" path="res://scenes/walls.tscn" id="4_3p60x"]
+[ext_resource type="PackedScene" uid="uid://cfushvj0wvwqx" path="res://scenes/floor.tscn" id="4_dbmwu"]
 [ext_resource type="PackedScene" uid="uid://bvevirn4lu4df" path="res://scenes/master_dice.tscn" id="4_xs61c"]
+[ext_resource type="Texture2D" uid="uid://bc4p22okafaue" path="res://images/puertas/puertasiluminadas/puertailu2.png" id="5_6hdfs"]
 [ext_resource type="PackedScene" uid="uid://cwu1a5q37af6n" path="res://scenes/first_dices.tscn" id="5_dbmwu"]
 [ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="5_wf2n6"]
 [ext_resource type="PackedScene" uid="uid://cvn0lseqopj48" path="res://scenes/pause_menu.tscn" id="6_ok7ty"]
+[ext_resource type="Texture2D" uid="uid://dubkghh4u7c3s" path="res://images/puertas/puertasiluminadas/puertailu3.png" id="6_p52to"]
+[ext_resource type="Texture2D" uid="uid://vx7xuctgvwwy" path="res://images/escenario/parte de arriba de muro.png" id="7_ld5u0"]
 [ext_resource type="PackedScene" uid="uid://dupml8hcjbwpn" path="res://scenes/inventory.tscn" id="7_xs61c"]
+[ext_resource type="Texture2D" uid="uid://cq5qeg3yjfadf" path="res://images/escenario/Pared lateral.png" id="8_6ay7c"]
+[ext_resource type="Texture2D" uid="uid://d1s8lh6fr65d5" path="res://images/lobby/Salida lobby.png" id="8_in4so"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wf2n6"]
-size = Vector2(128, 42)
+size = Vector2(104, 30)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_wf2n6")
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_ok7ty")]
 unique_name_in_owner = true
+position = Vector2(120, 8)
 
 [node name="Walls" parent="." instance=ExtResource("4_3p60x")]
 
+[node name="Floor" parent="." instance=ExtResource("4_dbmwu")]
+
+[node name="FloorMainHall" type="Node2D" parent="."]
+
+[node name="Floor2" type="Sprite2D" parent="FloorMainHall"]
+z_index = -100
+position = Vector2(568.00006, 63.99999)
+scale = Vector2(0.17812306, 0.1813575)
+texture = ExtResource("5_6hdfs")
+
+[node name="Floor3" type="Sprite2D" parent="FloorMainHall"]
+z_index = -100
+position = Vector2(24, 312)
+scale = Vector2(0.17854229, 0.18191686)
+texture = ExtResource("6_p52to")
+
+[node name="WallLow" type="Sprite2D" parent="FloorMainHall"]
+position = Vector2(551, 624)
+scale = Vector2(0.23294201, 0.1975465)
+texture = ExtResource("7_ld5u0")
+
+[node name="WallLow2" type="Sprite2D" parent="FloorMainHall"]
+z_index = -50
+position = Vector2(607, 624)
+scale = Vector2(0.23294201, 0.1975465)
+texture = ExtResource("7_ld5u0")
+
+[node name="WallRight" type="Sprite2D" parent="FloorMainHall"]
+position = Vector2(1146, 281)
+rotation = 4.712389
+scale = Vector2(0.2797326, 0.21379872)
+texture = ExtResource("8_6ay7c")
+
+[node name="WallRight2" type="Sprite2D" parent="FloorMainHall"]
+position = Vector2(1146.0001, 342.99997)
+rotation = 4.712389
+scale = Vector2(0.20273031, 0.22696722)
+texture = ExtResource("8_6ay7c")
+
 [node name="MasterDice" parent="." instance=ExtResource("4_xs61c")]
-position = Vector2(208, 88)
+position = Vector2(168, 88)
 
 [node name="FirstDices" parent="." instance=ExtResource("5_dbmwu")]
 
@@ -34,43 +79,35 @@ script = ExtResource("5_wf2n6")
 destination_level_tag = "level_one"
 destination_door_tag = "Doors/DoorOneLvl"
 
+[node name="Sprite2D" type="Sprite2D" parent="Doors/DoorOneMH"]
+z_index = -10
+position = Vector2(499.99997, 288)
+scale = Vector2(0.21093754, 0.234375)
+texture = ExtResource("8_in4so")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorOneMH"]
-position = Vector2(48, 11)
+position = Vector2(500, 292)
 shape = SubResource("RectangleShape2D_wf2n6")
 
 [node name="Spawn" type="Marker2D" parent="Doors/DoorOneMH"]
-position = Vector2(48, 288)
-
-[node name="Label" type="Label" parent="Doors/DoorOneMH"]
-offset_top = 40.0
-offset_right = 77.0
-offset_bottom = 63.0
-scale = Vector2(1.3718216, 1.1066219)
-text = "Level One"
+position = Vector2(504, 392)
 
 [node name="DoorTwoMH" type="Area2D" parent="Doors"]
-position = Vector2(272, 32)
+position = Vector2(557, -6)
 script = ExtResource("5_wf2n6")
 destination_level_tag = "level_two"
 destination_door_tag = "Doors/DoorTwoLvl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorTwoMH"]
-position = Vector2(48, 11)
+position = Vector2(31, 7)
 shape = SubResource("RectangleShape2D_wf2n6")
 
 [node name="Spawn" type="Marker2D" parent="Doors/DoorTwoMH"]
 position = Vector2(48, 288)
 
-[node name="Label" type="Label" parent="Doors/DoorTwoMH"]
-offset_left = -16.0
-offset_top = 40.0
-offset_right = 61.0
-offset_bottom = 63.0
-scale = Vector2(1.579029, 1.1986396)
-text = "Level Two"
-
 [node name="DoorThreeMH" type="Area2D" parent="Doors"]
-position = Vector2(440, 32)
+position = Vector2(16, 240)
+rotation = 1.5707964
 script = ExtResource("5_wf2n6")
 destination_level_tag = "level_three"
 destination_door_tag = "Doors/DoorThreeLvl"
@@ -82,103 +119,11 @@ shape = SubResource("RectangleShape2D_wf2n6")
 [node name="Spawn" type="Marker2D" parent="Doors/DoorThreeMH"]
 position = Vector2(48, 288)
 
-[node name="Label" type="Label" parent="Doors/DoorThreeMH"]
-offset_left = -16.0
-offset_top = 40.0
-offset_right = 24.0
-offset_bottom = 63.0
-scale = Vector2(1.3221369, 1.0688864)
-text = "Level Three"
-
-[node name="DoorFourMH" type="Area2D" parent="Doors"]
-position = Vector2(640, 32)
-script = ExtResource("5_wf2n6")
-destination_level_tag = "level_four"
-destination_door_tag = "Doors/DoorFourLvl"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorFourMH"]
-position = Vector2(48, 11)
-shape = SubResource("RectangleShape2D_wf2n6")
-
-[node name="Spawn" type="Marker2D" parent="Doors/DoorFourMH"]
-position = Vector2(48, 288)
-
-[node name="Label" type="Label" parent="Doors/DoorFourMH"]
-offset_left = -16.0
-offset_top = 40.0
-offset_right = 24.0
-offset_bottom = 63.0
-scale = Vector2(1.4267031, 1.1204796)
-text = "Level Four"
-
-[node name="DoorFiveMH" type="Area2D" parent="Doors"]
-position = Vector2(808, 32)
-script = ExtResource("5_wf2n6")
-destination_level_tag = "level_five"
-destination_door_tag = "Doors/DoorFiveLvl"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorFiveMH"]
-position = Vector2(48, 11)
-shape = SubResource("RectangleShape2D_wf2n6")
-
-[node name="Spawn" type="Marker2D" parent="Doors/DoorFiveMH"]
-position = Vector2(48, 288)
-
-[node name="Label" type="Label" parent="Doors/DoorFiveMH"]
-offset_left = -16.0
-offset_top = 40.0
-offset_right = 24.0
-offset_bottom = 63.0
-scale = Vector2(1.5297033, 1.2356184)
-text = "Level Five"
-
-[node name="DoorSixMH" type="Area2D" parent="Doors"]
-position = Vector2(976, 32)
-script = ExtResource("5_wf2n6")
-destination_level_tag = "level_six"
-destination_door_tag = "Doors/DoorSixLvl"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorSixMH"]
-position = Vector2(48, 11)
-shape = SubResource("RectangleShape2D_wf2n6")
-
-[node name="Spawn" type="Marker2D" parent="Doors/DoorSixMH"]
-position = Vector2(48, 288)
-
-[node name="Label" type="Label" parent="Doors/DoorSixMH"]
-offset_left = -16.0
-offset_top = 40.0
-offset_right = 24.0
-offset_bottom = 63.0
-scale = Vector2(1.7435102, 1.2156354)
-text = "Level Six"
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-
-[node name="Dice" type="Button" parent="UI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.84000003
-anchor_right = 0.5
-anchor_bottom = 0.84000003
-offset_left = -64.0
-offset_top = -32.320007
-offset_right = 64.0
-offset_bottom = 31.679993
-text = "Dado"
-
-[node name="DiceNumber" type="TextEdit" parent="UI/Dice"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 72.0
-offset_right = 120.0
-offset_bottom = 104.0
-script = ExtResource("3_muuyn")
 
 [node name="Inventory" parent="UI" instance=ExtResource("7_xs61c")]
 layout_mode = 1
@@ -212,7 +157,3 @@ size_flags_vertical = 4
 [connection signal="body_shape_entered" from="Doors/DoorOneMH" to="Doors/DoorOneMH" method="_on_body_shape_entered"]
 [connection signal="body_shape_entered" from="Doors/DoorTwoMH" to="Doors/DoorTwoMH" method="_on_body_shape_entered"]
 [connection signal="body_shape_entered" from="Doors/DoorThreeMH" to="Doors/DoorThreeMH" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="Doors/DoorFourMH" to="Doors/DoorFourMH" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="Doors/DoorFiveMH" to="Doors/DoorFiveMH" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="Doors/DoorSixMH" to="Doors/DoorSixMH" method="_on_body_shape_entered"]
-[connection signal="pressed" from="UI/Dice" to="UI/Dice/DiceNumber" method="_on_dice_pressed"]

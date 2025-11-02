@@ -1,27 +1,86 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcbvs3gv8msq1"]
+[gd_scene load_steps=14 format=3 uid="uid://dcbvs3gv8msq1"]
 
 [ext_resource type="Script" uid="uid://w0n6xaqdwp3h" path="res://scripts/level.gd" id="1_kkfyh"]
 [ext_resource type="PackedScene" uid="uid://c88gwi4clf313" path="res://scenes/main_character.tscn" id="2_4yacq"]
+[ext_resource type="Texture2D" uid="uid://jcqnikry80bo" path="res://images/bosses/Bola de cristal.png" id="3_l7e5k"]
 [ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="4_l7e5k"]
 [ext_resource type="PackedScene" uid="uid://drq3pw6yp3je0" path="res://scenes/walls.tscn" id="4_mmtqo"]
 [ext_resource type="PackedScene" uid="uid://cvn0lseqopj48" path="res://scenes/pause_menu.tscn" id="5_4yacq"]
+[ext_resource type="PackedScene" uid="uid://cfushvj0wvwqx" path="res://scenes/floor.tscn" id="5_kp5rg"]
 [ext_resource type="PackedScene" uid="uid://dupml8hcjbwpn" path="res://scenes/inventory.tscn" id="5_mmtqo"]
+[ext_resource type="Texture2D" uid="uid://bc4p22okafaue" path="res://images/puertas/puertasiluminadas/puertailu2.png" id="6_1e7uk"]
+[ext_resource type="Texture2D" uid="uid://cq5qeg3yjfadf" path="res://images/escenario/Pared lateral.png" id="7_ubnpl"]
+[ext_resource type="Texture2D" uid="uid://vx7xuctgvwwy" path="res://images/escenario/parte de arriba de muro.png" id="8_4br1q"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_843q2"]
-b = Vector2(128, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kp5rg"]
+size = Vector2(20, 20.820526)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e7uk"]
+size = Vector2(104, 30)
 
 [node name="level_two" type="Node2D"]
 script = ExtResource("1_kkfyh")
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_4yacq")]
+position = Vector2(248, 8)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(576, 320)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("3_l7e5k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+scale = Vector2(6.8726773, 3.8423629)
+shape = SubResource("RectangleShape2D_kp5rg")
 
 [node name="Walls" parent="." instance=ExtResource("4_mmtqo")]
+
+[node name="Floor" parent="." instance=ExtResource("5_kp5rg")]
+
+[node name="LvlTwoFloor" type="Node2D" parent="."]
+
+[node name="Floor2" type="Sprite2D" parent="LvlTwoFloor"]
+z_index = -100
+position = Vector2(552, 624.00006)
+scale = Vector2(0.17812306, 0.1813575)
+texture = ExtResource("6_1e7uk")
+
+[node name="WallRight" type="Sprite2D" parent="LvlTwoFloor"]
+position = Vector2(1146, 281)
+rotation = 4.712389
+scale = Vector2(0.2797326, 0.21379872)
+texture = ExtResource("7_ubnpl")
+
+[node name="WallRight2" type="Sprite2D" parent="LvlTwoFloor"]
+position = Vector2(1146.0001, 342.99997)
+rotation = 4.712389
+scale = Vector2(0.20273031, 0.22696722)
+texture = ExtResource("7_ubnpl")
+
+[node name="WallLeft" type="Sprite2D" parent="LvlTwoFloor"]
+position = Vector2(7, 260)
+rotation = 1.5707964
+scale = Vector2(0.21764442, 0.22538997)
+texture = ExtResource("7_ubnpl")
+
+[node name="WallLeft2" type="Sprite2D" parent="LvlTwoFloor"]
+position = Vector2(6.9999995, 316)
+rotation = 1.5707964
+scale = Vector2(0.21764442, 0.22538997)
+texture = ExtResource("7_ubnpl")
+
+[node name="WallUp" type="Sprite2D" parent="LvlTwoFloor"]
+position = Vector2(568, 22.999998)
+rotation = 3.1415927
+scale = Vector2(0.22012153, 0.20326391)
+texture = ExtResource("8_4br1q")
+
+[node name="WallUp2" type="Sprite2D" parent="LvlTwoFloor"]
+position = Vector2(620, 23)
+rotation = 3.1415927
+scale = Vector2(0.22012153, 0.20326391)
+texture = ExtResource("8_4br1q")
 
 [node name="Doors" type="Node2D" parent="."]
 
@@ -32,29 +91,17 @@ destination_level_tag = "main_hall"
 destination_door_tag = "Doors/DoorTwoMH"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorTwoLvl"]
-shape = SubResource("SegmentShape2D_843q2")
+position = Vector2(64, 608)
+shape = SubResource("RectangleShape2D_1e7uk")
 
 [node name="Spawn" type="Marker2D" parent="Doors/DoorTwoLvl"]
-position = Vector2(64, 288)
+position = Vector2(320, 288)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-
-[node name="TextEdit" type="TextEdit" parent="UI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.517
-anchor_top = 0.901
-anchor_right = 0.517
-anchor_bottom = 0.901
-offset_left = -75.584045
-offset_top = -31.848022
-offset_right = 76.415955
-offset_bottom = 32.151978
-text = "Level Two"
 
 [node name="Inventory" parent="UI" instance=ExtResource("5_mmtqo")]
 layout_mode = 1
@@ -82,4 +129,5 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="body_shape_entered" from="Doors/DoorTwoLvl" to="Doors/DoorTwoLvl" method="_on_body_shape_entered"]

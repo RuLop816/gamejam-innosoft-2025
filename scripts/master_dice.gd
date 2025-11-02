@@ -5,6 +5,10 @@ var inventory_dices
 var faces
 var m_dice_blocked
 
+const MASTER_DICE = preload("uid://3p8n55blgko8")
+const MASTER_DICE_RIGHT_NUMBER = preload("uid://u26uecg08k2p")
+
+
 func _physics_process(delta: float):
 	collision = GlobalVariables.collider
 	inventory_dices = GlobalVariables.dices_in_inventory
@@ -29,10 +33,9 @@ func result(result):
 	if(result != GlobalVariables.level_number):
 		choose_lost_dice()
 		GlobalVariables.dice_faces.erase(result)
-		print("Has perdido un dado, Unlucky!", "Tus dados ahora son: ", inventory_dices)
 	elif(result == GlobalVariables.level_number):
-		print("Accede al nivel ", GlobalVariables.level_number)
-		GlobalVariables.master_dice_blocked = false # Tiene que estar en True
+		DialogueManager.show_dialogue_balloon(MASTER_DICE_RIGHT_NUMBER)
+		GlobalVariables.master_dice_blocked = true
 		match GlobalVariables.level_number:
 			1: 
 				GlobalVariables.level_one_blocked = false

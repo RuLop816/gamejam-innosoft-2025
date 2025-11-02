@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://uschwerk1qik"
+path="res://.godot/imported/take_dices.dialogue-1edaf8a2905824b642e7521d68601cfe.tres"
+
+[deps]
+
+source_file="res://dialogues/take_dices.dialogue"
+dest_files=["res://.godot/imported/take_dices.dialogue-1edaf8a2905824b642e7521d68601cfe.tres"]
+
+[params]
+
+defaults=true

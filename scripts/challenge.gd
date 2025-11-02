@@ -10,12 +10,16 @@ var rival_roll_result
 var lvl_one_scene = load("res://scenes/level_one.tscn")
 var lvl_two_scene = load("res://scenes/level_two.tscn")
 var lvl_three_scene = load("res://scenes/level_three.tscn")
+var win_scene = load("res://scenes/win_screen.tscn")
+var unlucky_scene = load("res://scenes/unlucky_screen.tscn")
 var rival_burning_damage = 0
 var rival_frozen = 0
 var insta_death = false
 var insta_death_result
 var multiplier_result
 var turn_result = 0
+var already_has_invisible = false
+var invisible_dice_pos
 
 signal continue_pressed
 signal multiplier_dice_rolled
@@ -110,19 +114,44 @@ func rival_roll_dices(challenge_rival):
 			show_dice_result(null, $RivalBoard/DiceSix, "normal")
 			burn_rival()
 		"crystall_ball":
-			rival_points += randi_range(3, 6)
-			rival_points += randi_range(3, 6)
-			rival_points += randi_range(3, 6)
-			rival_points += randi_range(3, 6)
-			rival_points += randi_range(3, 6)
+			rival_roll_result = randi_range(2, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceOne, "normal")
+			rival_roll_result = randi_range(2, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceTwo, "normal")
+			rival_roll_result = randi_range(2, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceThree, "normal")
+			rival_roll_result = randi_range(2, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceFour, "normal")
+			rival_roll_result = randi_range(2, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceFive, "normal")
+			show_dice_result(null, $RivalBoard/DiceSix, "normal")
 			burn_rival()
 		"invisibility_cloak":
-			rival_points += randi_range(1, 6)
-			rival_points += randi_range(1, 6)
-			rival_points += randi_range(1, 6)
-			rival_points += randi_range(1, 6)
-			rival_points += randi_range(1, 6)
-			rival_points += randi_range(1, 6)
+			rival_roll_result = randi_range(1, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceOne, "normal")
+			rival_roll_result = randi_range(1, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceTwo, "normal")
+			rival_roll_result = randi_range(1, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceThree, "normal")
+			rival_roll_result = randi_range(1, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceFour, "normal")
+			rival_roll_result = randi_range(1, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceFive, "normal")
+			rival_roll_result = randi_range(1, 6)
+			rival_points += rival_roll_result
+			show_dice_result(rival_roll_result, $RivalBoard/DiceSix, "normal")
+			if(rival_points >= 75 and already_has_invisible == false):
+				make_dice_invisible()
 			burn_rival()
 	print("La puntuación de tu rival este turno es: ", rival_points)
 	$RivalBoard/Scoreboard/RivalScore.text = str(rival_points)
@@ -137,11 +166,11 @@ func end_turn():
 		elif(player_points == rival_points):
 			start_turn()
 		else:
-			print("Unlucky, has perdido")
+			loose()
 	elif(player_points >= goal):
 		win_boss()
 	elif(rival_points >= goal):
-		print("Unlucky, has perdido")
+		loose()
 	else:
 		start_turn()
 		
@@ -219,12 +248,51 @@ func win_boss():
 		"paloma_mauricio":
 			get_tree().change_scene_to_packed(lvl_one_scene)
 			GlobalVariables.boss_defeated[1] = true
+			GlobalVariables.master_dice_blocked = false
 		"crystall_ball":
 			get_tree().change_scene_to_packed(lvl_two_scene)
 			GlobalVariables.boss_defeated[2] = true
+			GlobalVariables.master_dice_blocked = false
 		"invisibility_cloak":
-			get_tree().change_scene_to_packed(lvl_three_scene)
+			get_tree().change_scene_to_packed(win_scene)
 			GlobalVariables.boss_defeated[3] = true
+			match invisible_dice_pos:
+				0:
+					$UI/Inventory/PanelContainer/Dices/GroupOne/DiceOne.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupOne/DiceOne.disabled = false
+				1:
+					$UI/Inventory/PanelContainer/Dices/GroupOne/DiceTwo.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupOne/DiceTwo.disabled = false
+				2:
+					$UI/Inventory/PanelContainer/Dices/GroupTwo/DiceThree.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupTwo/DiceThree.disabled = false
+				3:
+					$UI/Inventory/PanelContainer/Dices/GroupTwo/DiceFour.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupTwo/DiceFour.disabled = false
+				4:
+					$UI/Inventory/PanelContainer/Dices/GroupThree/DiceFive.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupThree/DiceFive.disabled = false
+				5:
+					$UI/Inventory/PanelContainer/Dices/GroupThree/DiceSix.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupThree/DiceSix.disabled = false
+				6:
+					$UI/Inventory/PanelContainer/Dices/GroupFour/DiceSeven.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupFour/DiceSeven.disabled = false
+				7:
+					$UI/Inventory/PanelContainer/Dices/GroupFour/DiceEight.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupFour/DiceEight.disabled = false
+				8:
+					$UI/Inventory/PanelContainer/Dices/GroupFive/DiceNine.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupFive/DiceNine.disabled = false
+				9:
+					$UI/Inventory/PanelContainer/Dices/GroupFive/DiceTen.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupFive/DiceTen.disabled = false
+				10:
+					$UI/Inventory/PanelContainer/Dices/GroupSix/DiceEleven.visible = true
+					$UI/Inventory/PanelContainer/Dices/GroupSix/DiceEleven.disabled = false
+		
+func loose():
+	get_tree().change_scene_to_packed(unlucky_scene)
 		
 func burn_rival():
 	if(GlobalVariables.rival_burning_time > 0):
@@ -243,6 +311,49 @@ func multiply_result(roll_result):
 		$PlayerBoard/Scoreboard/PlayerScore.text = str(player_points)
 	await continue_pressed
 	rival_roll_dices(rival)
+	
+func make_dice_invisible():
+	var invisible_dice = GlobalVariables.dices_in_inventory.pick_random()
+	var invisible_dice_position = GlobalVariables.dices_in_inventory.find(invisible_dice)
+	invisible_dice_pos = invisible_dice_position
+	if(invisible_dice == null):
+		make_dice_invisible()
+	else:
+		match invisible_dice_position:
+			0:
+				$UI/Inventory/PanelContainer/Dices/GroupOne/DiceOne.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupOne/DiceOne.disabled = true
+			1:
+				$UI/Inventory/PanelContainer/Dices/GroupOne/DiceTwo.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupOne/DiceTwo.disabled = true
+			2:
+				$UI/Inventory/PanelContainer/Dices/GroupTwo/DiceThree.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupTwo/DiceThree.disabled = true
+			3:
+				$UI/Inventory/PanelContainer/Dices/GroupTwo/DiceFour.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupTwo/DiceFour.disabled = true
+			4:
+				$UI/Inventory/PanelContainer/Dices/GroupThree/DiceFive.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupThree/DiceFive.disabled = true
+			5:
+				$UI/Inventory/PanelContainer/Dices/GroupThree/DiceSix.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupThree/DiceSix.disabled = true
+			6:
+				$UI/Inventory/PanelContainer/Dices/GroupFour/DiceSeven.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupFour/DiceSeven.disabled = true
+			7:
+				$UI/Inventory/PanelContainer/Dices/GroupFour/DiceEight.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupFour/DiceEight.disabled = true
+			8:
+				$UI/Inventory/PanelContainer/Dices/GroupFive/DiceNine.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupFive/DiceNine.disabled = true
+			9:
+				$UI/Inventory/PanelContainer/Dices/GroupFive/DiceTen.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupFive/DiceTen.disabled = true
+			10:
+				$UI/Inventory/PanelContainer/Dices/GroupSix/DiceEleven.visible = false
+				$UI/Inventory/PanelContainer/Dices/GroupSix/DiceEleven.disabled = true
+	already_has_invisible = true
 	
 func _on_continue_pressed() -> void:
 	continue_pressed.emit()

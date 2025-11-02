@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://3p8n55blgko8"
+path="res://.godot/imported/master_dice.dialogue-499bc4f2c278e9b12f793e48cba8c081.tres"
+
+[deps]
+
+source_file="res://dialogues/master_dice.dialogue"
+dest_files=["res://.godot/imported/master_dice.dialogue-499bc4f2c278e9b12f793e48cba8c081.tres"]
+
+[params]
+
+defaults=true

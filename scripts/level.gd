@@ -7,6 +7,9 @@ var rew_not_obtained
 var special_dices
 var special_dice_obtained
 
+const TUTORIAL_DIALOGUE_ = preload("uid://cu2eklm8kig6v")
+const TAKE_DICES = preload("uid://uschwerk1qik")
+
 func _ready():
 	if NavigationManager.spawn_door_tag != null:
 		_on_level_spawn(NavigationManager.spawn_door_tag)
@@ -15,9 +18,23 @@ func _physics_process(delta: float):
 	collision = GlobalVariables.collider
 	
 	if(collision != null):
-		if(collision.name == "Mauricio" and Input.is_action_just_pressed("Interact")):
-			GlobalVariables.boss = "paloma_mauricio"
-			GlobalVariables.goal = 50
+		if(collision.name == "Mauricio" and Input.is_action_just_pressed("Interact") and GlobalVariables.boss_defeated[1] == false):
+			if(GlobalVariables.tutorial_dialogue_red == false):
+				DialogueManager.show_dialogue_balloon(TUTORIAL_DIALOGUE_)
+				GlobalVariables.tutorial_dialogue_red = true
+			elif(GlobalVariables.first_dices_taken == false):
+				DialogueManager.show_dialogue_balloon(TAKE_DICES)
+			else:
+				GlobalVariables.boss = "paloma_mauricio"
+				GlobalVariables.goal = 50
+				get_tree().change_scene_to_packed(challenge_scene)
+		if(collision.name == "Ball" and Input.is_action_just_pressed("Interact") and GlobalVariables.boss_defeated[2] == false):
+			GlobalVariables.boss = "crystall_ball"
+			GlobalVariables.goal = 100
+			get_tree().change_scene_to_packed(challenge_scene)
+		if(collision.name == "Invisible" and Input.is_action_just_pressed("Interact") and GlobalVariables.boss_defeated[3] == false):
+			GlobalVariables.boss = "invisibility_cloak"
+			GlobalVariables.goal = 150
 			get_tree().change_scene_to_packed(challenge_scene)
 		
 func _on_level_spawn(destination_tag: String):

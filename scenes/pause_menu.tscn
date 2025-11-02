@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvn0lseqopj48"]
+[gd_scene load_steps=15 format=3 uid="uid://cvn0lseqopj48"]
 
 [ext_resource type="Script" uid="uid://cuf4h6fmfb4gf" path="res://scripts/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://wcc1hq41v3pw" path="res://images/pause_menu.gdshader" id="2_kukqi"]
 [ext_resource type="Script" uid="uid://ca53kl5g0gpct" path="res://scripts/audio_control.gd" id="3_7l7mv"]
+[ext_resource type="Texture2D" uid="uid://bdtklym1sb6yg" path="res://images/botones/resume_mas_nitido.png" id="3_88e76"]
+[ext_resource type="Texture2D" uid="uid://dbl56tm53gf4d" path="res://images/botones/options_mas_nitido.png" id="4_knqa7"]
 [ext_resource type="Script" uid="uid://djkr85wg64phi" path="res://scripts/fullscreen_control.gd" id="4_v4r4p"]
 [ext_resource type="AudioStream" uid="uid://cxe4v4lidm1ga" path="res://audios/Kim Lightyear - Magic Tales (Dear Diary Loop).mp3" id="5_1s2dm"]
+[ext_resource type="Texture2D" uid="uid://bube0ysmhcxeu" path="res://images/botones/exit_mejor.png" id="5_71k7c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uahpa"]
 shader = ExtResource("2_kukqi")
@@ -112,41 +115,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -384.0
-offset_top = -196.0
-offset_right = 384.0
-offset_bottom = 188.0
+offset_left = -320.0
+offset_top = -192.0
+offset_right = 320.0
+offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Buttons" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 alignment = 1
 
-[node name="Resume" type="Button" parent="PanelContainer/Buttons"]
+[node name="Resume" type="TextureButton" parent="PanelContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
-theme_override_font_sizes/font_size = 24
-text = "Resume
-"
-icon_alignment = 1
+size_flags_vertical = 3
+texture_normal = ExtResource("3_88e76")
+ignore_texture_size = true
+stretch_mode = 6
 
-[node name="Options" type="Button" parent="PanelContainer/Buttons"]
+[node name="Options" type="TextureButton" parent="PanelContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
-theme_override_font_sizes/font_size = 24
-text = "Options
-"
+size_flags_vertical = 3
+texture_normal = ExtResource("4_knqa7")
+ignore_texture_size = true
+stretch_mode = 6
 
-[node name="Exit" type="Button" parent="PanelContainer/Buttons"]
+[node name="Exit" type="TextureButton" parent="PanelContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
-theme_override_font_sizes/font_size = 24
-text = "Exit"
+size_flags_vertical = 3
+texture_normal = ExtResource("5_71k7c")
+ignore_texture_size = true
+stretch_mode = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,21 +1,86 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7omxb20balob"]
+[gd_scene load_steps=14 format=3 uid="uid://b7omxb20balob"]
 
 [ext_resource type="Script" uid="uid://w0n6xaqdwp3h" path="res://scripts/level.gd" id="1_ol28e"]
 [ext_resource type="PackedScene" uid="uid://c88gwi4clf313" path="res://scenes/main_character.tscn" id="2_jyw0m"]
+[ext_resource type="Texture2D" uid="uid://dg5w6meh2eng" path="res://images/bosses/Capa invisibilidad.png" id="3_yguh4"]
 [ext_resource type="PackedScene" uid="uid://drq3pw6yp3je0" path="res://scenes/walls.tscn" id="4_87c5r"]
 [ext_resource type="Script" uid="uid://dkol52t02r16c" path="res://scripts/door.gd" id="4_yguh4"]
 [ext_resource type="PackedScene" uid="uid://dupml8hcjbwpn" path="res://scenes/inventory.tscn" id="5_87c5r"]
+[ext_resource type="PackedScene" uid="uid://cfushvj0wvwqx" path="res://scenes/floor.tscn" id="5_crxtl"]
 [ext_resource type="PackedScene" uid="uid://cvn0lseqopj48" path="res://scenes/pause_menu.tscn" id="5_jyw0m"]
+[ext_resource type="Texture2D" uid="uid://dubkghh4u7c3s" path="res://images/puertas/puertasiluminadas/puertailu3.png" id="6_s6t3g"]
+[ext_resource type="Texture2D" uid="uid://vx7xuctgvwwy" path="res://images/escenario/parte de arriba de muro.png" id="7_oo7w2"]
+[ext_resource type="Texture2D" uid="uid://cq5qeg3yjfadf" path="res://images/escenario/Pared lateral.png" id="8_l3r28"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_843q2"]
-b = Vector2(128, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crxtl"]
+size = Vector2(88.781494, 111.42085)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6t3g"]
+size = Vector2(104, 30)
 
 [node name="level_three" type="Node2D"]
 script = ExtResource("1_ol28e")
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_jyw0m")]
+position = Vector2(168, -8)
+
+[node name="Invisible" type="CharacterBody2D" parent="."]
+position = Vector2(576, 320)
+scale = Vector2(0.9010893, 0.86159843)
+
+[node name="Sprite2D" type="Sprite2D" parent="Invisible"]
+position = Vector2(-8.583069e-06, 0)
+scale = Vector2(0.3906382, 0.3683174)
+texture = ExtResource("3_yguh4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Invisible"]
+shape = SubResource("RectangleShape2D_crxtl")
 
 [node name="Walls" parent="." instance=ExtResource("4_87c5r")]
+
+[node name="Floor" parent="." instance=ExtResource("5_crxtl")]
+
+[node name="LvlThreeFloor" type="Node2D" parent="."]
+
+[node name="Floor3" type="Sprite2D" parent="LvlThreeFloor"]
+position = Vector2(1088, 320)
+scale = Vector2(0.17854229, 0.18191686)
+texture = ExtResource("6_s6t3g")
+
+[node name="WallUp" type="Sprite2D" parent="LvlThreeFloor"]
+position = Vector2(568, 22.999998)
+rotation = 3.1415927
+scale = Vector2(0.22012153, 0.20326391)
+texture = ExtResource("7_oo7w2")
+
+[node name="WallUp2" type="Sprite2D" parent="LvlThreeFloor"]
+position = Vector2(620, 23)
+rotation = 3.1415927
+scale = Vector2(0.22012153, 0.20326391)
+texture = ExtResource("7_oo7w2")
+
+[node name="WallLeft" type="Sprite2D" parent="LvlThreeFloor"]
+position = Vector2(7, 260)
+rotation = 1.5707964
+scale = Vector2(0.21764442, 0.22538997)
+texture = ExtResource("8_l3r28")
+
+[node name="WallLeft2" type="Sprite2D" parent="LvlThreeFloor"]
+position = Vector2(6.9999995, 316)
+rotation = 1.5707964
+scale = Vector2(0.21764442, 0.22538997)
+texture = ExtResource("8_l3r28")
+
+[node name="WallLow" type="Sprite2D" parent="LvlThreeFloor"]
+position = Vector2(551, 624)
+scale = Vector2(0.23294201, 0.1975465)
+texture = ExtResource("7_oo7w2")
+
+[node name="WallLow2" type="Sprite2D" parent="LvlThreeFloor"]
+z_index = -50
+position = Vector2(607, 624)
+scale = Vector2(0.23294201, 0.1975465)
+texture = ExtResource("7_oo7w2")
 
 [node name="Doors" type="Node2D" parent="."]
 
@@ -25,30 +90,19 @@ script = ExtResource("4_yguh4")
 destination_level_tag = "main_hall"
 destination_door_tag = "Doors/DoorThreeMH"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorThreeLvl"]
-shape = SubResource("SegmentShape2D_843q2")
-
 [node name="Spawn" type="Marker2D" parent="Doors/DoorThreeLvl"]
 position = Vector2(64, 288)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/DoorThreeLvl"]
+position = Vector2(632, 264)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_s6t3g")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-
-[node name="TextEdit" type="TextEdit" parent="UI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.517
-anchor_top = 0.901
-anchor_right = 0.517
-anchor_bottom = 0.901
-offset_left = -75.584045
-offset_top = -31.848022
-offset_right = 76.415955
-offset_bottom = 32.151978
-text = "Level Three"
 
 [node name="Inventory" parent="UI" instance=ExtResource("5_87c5r")]
 layout_mode = 1
@@ -76,4 +130,5 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="body_shape_entered" from="Doors/DoorThreeLvl" to="Doors/DoorThreeLvl" method="_on_body_shape_entered"]

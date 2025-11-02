@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvvamfkcodjke"]
+[gd_scene load_steps=10 format=3 uid="uid://bvvamfkcodjke"]
 
 [ext_resource type="Script" uid="uid://brgdx32thgi17" path="res://scripts/home_screen.gd" id="1_lapbl"]
 [ext_resource type="Script" uid="uid://ca53kl5g0gpct" path="res://scripts/audio_control.gd" id="2_tjifo"]
-[ext_resource type="AudioStream" uid="uid://cxe4v4lidm1ga" path="res://audios/Kim Lightyear - Magic Tales (Dear Diary Loop).mp3" id="2_ujmiq"]
 [ext_resource type="Script" uid="uid://djkr85wg64phi" path="res://scripts/fullscreen_control.gd" id="3_bie51"]
-[ext_resource type="Texture2D" uid="uid://hoy4ivw6c7fu" path="res://images/botones/Start.png" id="4_ih2x6"]
-[ext_resource type="Texture2D" uid="uid://bi4bxef568fam" path="res://images/botones/Options.png" id="5_ked1l"]
+[ext_resource type="Texture2D" uid="uid://dlx4k8ubthl2u" path="res://images/botones/start_mas_nitido.png" id="4_15ihl"]
+[ext_resource type="Texture2D" uid="uid://dbl56tm53gf4d" path="res://images/botones/options_mas_nitido.png" id="5_airqx"]
+[ext_resource type="Texture2D" uid="uid://bube0ysmhcxeu" path="res://images/botones/exit_mejor.png" id="6_ii2s2"]
+[ext_resource type="Texture2D" uid="uid://b01mnscj4525n" path="res://images/Portada/Portada.png" id="8_15ihl"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ujmiq"]
 color = Color(1, 1, 1, 1)
@@ -93,26 +94,29 @@ alignment = 1
 [node name="Start Game" type="TextureButton" parent="Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("4_ih2x6")
+texture_normal = ExtResource("4_15ihl")
 ignore_texture_size = true
 stretch_mode = 6
 
 [node name="Options" type="TextureButton" parent="Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("5_ked1l")
+texture_normal = ExtResource("5_airqx")
 ignore_texture_size = true
 stretch_mode = 6
 
-[node name="Exit" type="Button" parent="Buttons"]
+[node name="Exit" type="TextureButton" parent="Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
-text = "Exit"
+texture_normal = ExtResource("6_ii2s2")
+ignore_texture_size = true
+stretch_mode = 6
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ujmiq")
-autoplay = true
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -4000
+position = Vector2(576, 324)
+scale = Vector2(1.125, 0.6328125)
+texture = ExtResource("8_15ihl")
 
 [connection signal="pressed" from="OptionsMenu/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="OptionsMenu/AudioControl" to="OptionsMenu/AudioControl" method="_on_value_changed"]

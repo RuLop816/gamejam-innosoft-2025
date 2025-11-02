@@ -135,7 +135,7 @@ vertical_alignment = 1
 
 [node name="GoalBoard" type="Sprite2D" parent="."]
 position = Vector2(576, 318.80627)
-scale = Vector2(0.19999993, 0.0824054)
+scale = Vector2(0.29648507, 0.10132486)
 texture = ExtResource("9_in4yl")
 
 [node name="GoalScore" type="RichTextLabel" parent="GoalBoard"]
@@ -144,13 +144,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -1136.0
-offset_right = 0.00024414063
-offset_bottom = 4.70166
+offset_left = -640.0001
+offset_top = -1138.3508
+offset_right = 0.00012207031
+offset_bottom = 2.35083
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 500
+theme_override_font_sizes/normal_font_size = 400
 text = "50"
 horizontal_alignment = 1
 vertical_alignment = 1

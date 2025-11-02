@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cepkcn3l7x1fd"]
+
+[ext_resource type="Script" uid="uid://cwwq8nciq4l2j" path="res://scripts/win_screen.gd" id="1_erk2x"]
+[ext_resource type="Texture2D" uid="uid://dlg6okjsp6cu2" path="res://images/Pantallas/Win screen with credits.png" id="1_wv5lq"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_erk2x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577.7778, 324.24982)
+scale = Vector2(2.243056, 1.2666008)
+texture = ExtResource("1_wv5lq")
