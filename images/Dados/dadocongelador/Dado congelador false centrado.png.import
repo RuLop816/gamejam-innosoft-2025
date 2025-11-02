@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e33o36abvsmq"
-path="res://.godot/imported/Dado quemado 3.png-08e7f9829bc69c2035cf99baf35a2b60.ctex"
+uid="uid://d1oimpqg8n8dj"
+path="res://.godot/imported/Dado congelador false centrado.png-f2bfb1e14b4d81f623e4e6ba794ee46d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Dados/dado quemaado/Dado quemado 3.png"
-dest_files=["res://.godot/imported/Dado quemado 3.png-08e7f9829bc69c2035cf99baf35a2b60.ctex"]
+source_file="res://images/Dados/dadocongelador/Dado congelador false centrado.png"
+dest_files=["res://.godot/imported/Dado congelador false centrado.png-f2bfb1e14b4d81f623e4e6ba794ee46d.ctex"]
 
 [params]
 

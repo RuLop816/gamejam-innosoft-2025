@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e33o36abvsmq"
-path="res://.godot/imported/Dado quemado 3.png-08e7f9829bc69c2035cf99baf35a2b60.ctex"
+uid="uid://d0tp4nn8082sg"
+path="res://.godot/imported/Dado insta death fallido.png-ebc7ab07e14ad1f0e54ed275a33b25df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Dados/dado quemaado/Dado quemado 3.png"
-dest_files=["res://.godot/imported/Dado quemado 3.png-08e7f9829bc69c2035cf99baf35a2b60.ctex"]
+source_file="res://images/Dados/dadoinstadeath/Dado insta death fallido.png"
+dest_files=["res://.godot/imported/Dado insta death fallido.png-ebc7ab07e14ad1f0e54ed275a33b25df.ctex"]
 
 [params]
 

@@ -14,7 +14,7 @@ size = Vector2(42, 88)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_843q2"]
 b = Vector2(128, 0)
 
-[node name="level_one" type="Node2D"]
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_cd1xg")
 
 [node name="Mauricio" type="CharacterBody2D" parent="."]

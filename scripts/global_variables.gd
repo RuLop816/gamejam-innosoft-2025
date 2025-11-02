@@ -4,6 +4,8 @@ var collider
 var level_number = 1
 var dices_in_inventory = [null, null, null, null, null, null, null, null, null, null, null]
 var dices_in_hand = []
+var special_dices_available = ["burnt_dice", "insta_death_dice", "multiplier_dice"]
+var special_dices_in_game = ["burnt_dice", "insta_death_dice", "multiplier_dice"]
 var pause_menu_opened = false
 var inventory_opened = false
 var ui_blocked = false
@@ -20,3 +22,6 @@ var first_dices_taken = false
 var boss
 var goal 
 var accepted_pressed = false
+var boss_defeated := {1:false, 2:false, 3:false}
+var reward_not_obtained = {1:true, 2:true, 3:true}
+var rival_burning_time = 0

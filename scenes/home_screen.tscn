@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvvamfkcodjke"]
+[gd_scene load_steps=9 format=3 uid="uid://bvvamfkcodjke"]
 
 [ext_resource type="Script" uid="uid://brgdx32thgi17" path="res://scripts/home_screen.gd" id="1_lapbl"]
 [ext_resource type="Script" uid="uid://ca53kl5g0gpct" path="res://scripts/audio_control.gd" id="2_tjifo"]
 [ext_resource type="AudioStream" uid="uid://cxe4v4lidm1ga" path="res://audios/Kim Lightyear - Magic Tales (Dear Diary Loop).mp3" id="2_ujmiq"]
 [ext_resource type="Script" uid="uid://djkr85wg64phi" path="res://scripts/fullscreen_control.gd" id="3_bie51"]
 [ext_resource type="Texture2D" uid="uid://hoy4ivw6c7fu" path="res://images/botones/Start.png" id="4_ih2x6"]
+[ext_resource type="Texture2D" uid="uid://bi4bxef568fam" path="res://images/botones/Options.png" id="5_ked1l"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ujmiq"]
 color = Color(1, 1, 1, 1)
@@ -96,12 +97,12 @@ texture_normal = ExtResource("4_ih2x6")
 ignore_texture_size = true
 stretch_mode = 6
 
-[node name="Options" type="Button" parent="Buttons"]
+[node name="Options" type="TextureButton" parent="Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
-text = "Options
-"
+texture_normal = ExtResource("5_ked1l")
+ignore_texture_size = true
+stretch_mode = 6
 
 [node name="Exit" type="Button" parent="Buttons"]
 layout_mode = 2

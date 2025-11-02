@@ -4,6 +4,7 @@ var pauseMenuOpened
 var uiBlocked
 var inventoryAction
 var dicesInInventory
+var rival_burn_time
 	
 func _ready():
 	self.propagate_call("set_mouse_filter", [Control.MOUSE_FILTER_IGNORE])
@@ -14,6 +15,7 @@ func _process(delta: float) -> void:
 	uiBlocked = GlobalVariables.ui_blocked
 	inventoryAction = GlobalVariables.inventory_action
 	dicesInInventory = GlobalVariables.dices_in_inventory
+	rival_burn_time = GlobalVariables.rival_burning_time
 	
 func close_inventory():
 	self.move_to_front()
@@ -52,7 +54,7 @@ func take_first_dices():
 	
 func add_dice(dice):
 	var dice_position = 0
-	for d in dicesInInventory:
+	for d in GlobalVariables.dices_in_inventory:
 		if(d == null):
 			GlobalVariables.dices_in_inventory[dice_position] = dice
 			break
@@ -132,10 +134,6 @@ func assign_dice_ui(dice, button):
 		"chameleon_dice":
 			button.texture_normal = load("res://images/Dados/dadocamaleon/DadoCamaleon.png")
 			button.texture_pressed = load("res://images/Dados/dadocamaleon/DadoCamaleonPulsado.png")
-			button.stretch_mode = 6
-		"ice_dice":
-			button.texture_normal = load("res://images/Dados/dadocongelador/DadoCongelador.png")
-			button.texture_pressed = load("res://images/Dados/dadocongelador/DadoCongeladoPulsado.png")
 			button.stretch_mode = 6
 		"insta_death_dice":
 			button.texture_normal = load("res://images/Dados/dadoinstadeath/DadoInstaDeath.png")
@@ -239,86 +237,124 @@ func _on_dice_eleven_pressed() -> void:
 		close_inventory()
 
 func _on_dice_one_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_one = GlobalVariables.dices_in_inventory[0]
+	if(inventoryAction == "choose dices" and dice_one != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[0])
+			GlobalVariables.dices_in_hand.append(dice_one)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[0])
+			GlobalVariables.dices_in_hand.erase(dice_one)
 
 func _on_dice_two_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_two = GlobalVariables.dices_in_inventory[1]
+	if(inventoryAction == "choose dices" and dice_two != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[1])
+			GlobalVariables.dices_in_hand.append(dice_two)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[1])
+			GlobalVariables.dices_in_hand.erase(dice_two)
 
 func _on_dice_three_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_three = GlobalVariables.dices_in_inventory[2]
+	if(inventoryAction == "choose dices" and dice_three != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[2])
+			GlobalVariables.dices_in_hand.append(dice_three)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[2])
+			GlobalVariables.dices_in_hand.erase(dice_three)
 
 func _on_dice_four_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_four = GlobalVariables.dices_in_inventory[3]
+	if(inventoryAction == "choose dices" and dice_four != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[3])
+			GlobalVariables.dices_in_hand.append(dice_four)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[3])
+			GlobalVariables.dices_in_hand.erase(dice_four)
 
 func _on_dice_five_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_five = GlobalVariables.dices_in_inventory[4]
+	if(inventoryAction == "choose dices" and dice_five != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[4])
+			GlobalVariables.dices_in_hand.append(dice_five)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[4])
+			GlobalVariables.dices_in_hand.erase(dice_five)
 
 func _on_dice_six_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_six = GlobalVariables.dices_in_inventory[5]
+	if(inventoryAction == "choose dices" and dice_six != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[5])
+			GlobalVariables.dices_in_hand.append(dice_six)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[5])
+			GlobalVariables.dices_in_hand.erase(dice_six)
 
 func _on_dice_seven_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_seven = GlobalVariables.dices_in_inventory[6]
+	if(inventoryAction == "choose dices" and dice_seven != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[6])
+			GlobalVariables.dices_in_hand.append(dice_seven)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[6])
+			GlobalVariables.dices_in_hand.erase(dice_seven)
 
 func _on_dice_eight_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_eight = GlobalVariables.dices_in_inventory[7]
+	if(inventoryAction == "choose dices" and dice_eight != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[7])
+			GlobalVariables.dices_in_hand.append(dice_eight)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[7])
+			GlobalVariables.dices_in_hand.erase(dice_eight)
 
 func _on_dice_nine_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_nine = GlobalVariables.dices_in_inventory[8]
+	if(inventoryAction == "choose dices" and dice_nine != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[8])
+			GlobalVariables.dices_in_hand.append(dice_nine)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[8])
+			GlobalVariables.dices_in_hand.erase(dice_nine)
 
 func _on_dice_ten_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_ten = GlobalVariables.dices_in_inventory[9]
+	if(inventoryAction == "choose dices" and dice_ten != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[9])
+			GlobalVariables.dices_in_hand.append(dice_ten)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[9])
+			GlobalVariables.dices_in_hand.erase(dice_ten)
 
 func _on_dice_eleven_toggled(toggled_on: bool) -> void:
-	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
+	var dice_eleven = GlobalVariables.dices_in_inventory[10]
+	if(inventoryAction == "choose dices" and dice_eleven != null):
 		if toggled_on:
-			GlobalVariables.dices_in_hand.append(GlobalVariables.dices_in_inventory[10])
+			GlobalVariables.dices_in_hand.append(dice_eleven)
 		elif !toggled_on:
-			GlobalVariables.dices_in_hand.erase(GlobalVariables.dices_in_inventory[10])
+			GlobalVariables.dices_in_hand.erase(dice_eleven)
 
 func _on_accept_button_pressed() -> void:
+	print(inventoryAction)
+	print(GlobalVariables.dices_in_hand)
 	if(inventoryAction == "choose dices" and GlobalVariables.dices_in_hand.size() <= 6):
-		GlobalVariables.ui_blocked = false
-		GlobalVariables.inventory_action = null
-		close_inventory()
-		GlobalVariables.accepted_pressed = true
+		print("Se mete en la condición principal")
+		if(GlobalVariables.dices_in_hand.has("insta_death_dice") and GlobalVariables.dices_in_hand.size()>1):
+			print("Pasa la primera condición")
+			pass
+		elif(GlobalVariables.dices_in_hand.has("multiplier_dice") and GlobalVariables.dices_in_hand.size()>3):
+			print("Pasa la segunda condición")
+			pass
+		elif(two_special_dices_in_hand()):
+			print("Pasa la tercera condición")
+			pass
+		elif(GlobalVariables.dices_in_hand.has("burnt_dice") and rival_burn_time > 0):
+			pass
+		else:
+			GlobalVariables.ui_blocked = false
+			GlobalVariables.inventory_action = null
+			close_inventory()
+			GlobalVariables.accepted_pressed = true
 		
+func two_special_dices_in_hand() -> bool:
+	var num_special_dices = 0
+	var res = false
+	for dice in GlobalVariables.dices_in_hand:
+		print(dice)
+		for special_dice in GlobalVariables.special_dices_in_game:
+			if dice == special_dice:
+				num_special_dices += 1
+			if num_special_dices > 1:
+				res = true
+				break
+	return res

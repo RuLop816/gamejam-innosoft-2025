@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7rnrs67so1fs"
-path="res://.godot/imported/DadoCongeladoPulsado.png-88c979312115cc94031add0f829fb190.ctex"
+uid="uid://chrr0qikkwy8r"
+path="res://.godot/imported/Dado congelador true pulsado.png-410396e51ffe16e8bd3828fdfa628f16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Dados/dadocongelador/DadoCongeladoPulsado.png"
-dest_files=["res://.godot/imported/DadoCongeladoPulsado.png-88c979312115cc94031add0f829fb190.ctex"]
+source_file="res://images/Dados/dadocongelador/Dado congelador true pulsado.png"
+dest_files=["res://.godot/imported/Dado congelador true pulsado.png-410396e51ffe16e8bd3828fdfa628f16.ctex"]
 
 [params]
 
